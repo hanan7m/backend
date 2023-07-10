@@ -1,23 +1,22 @@
-//import
-const express = require('express');
-const bodyParser = require('body-parser');
+// server.js
+const express = require("express");
 const app = express();
-
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
-
-//connect to DB
-const dbConfig = require('./config/database.config.js');
+// Include mongoose in the server file
 const mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
-mongoose.connect(dbConfig.url, {
-    useNewUrlParser: true
-}).then(() => {
-    console.log("Databse Connected Successfully!!");    
-}).catch(err => {
-    console.log('Could not connect to the database', err);
-    process.exit();
-});
+app.use(express.json());
+
+// Tell the server file about the .env file
+require("dotenv").config(); 
+// Use the MONGO_URI from .env or use local mongodb
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("db working");
+  })
+  .catch(() => {
+    console.log("db not working");
+  });
+
 
 
 //////////////////router///////////////
