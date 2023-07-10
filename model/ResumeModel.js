@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
 const ResumeSchema = new Schema({
   fullname: {
@@ -14,7 +14,7 @@ const ResumeSchema = new Schema({
     type: Date,
     required: true,
     num:Number,
-    name:string,
+    name:String,
     Gpt:Number,
   }] ,
   
