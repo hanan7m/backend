@@ -2,24 +2,30 @@ const resumeModel = require('../model/ResumeModel')
 
 // Create and Save a new Hr
 exports.create = async (req, res) => {
-    if (!req.body.fullname && !req.body.phone && !req.body.s_date && !req.body.education ) {
+    if (!req.body.fullname && !req.body.phone &&  !req.body.education ) {
         res.status(400).send({ message: "Content can not be empty!" });
     }
     
     const Resume = new resumeModel({
         fullname: req.body.fullname,
         phone: req.body.phone,
-        education: req.body.education    
+        email:req.body.email,
+        education: req.body.education,
+        experience: req.body.experience,
+        skills: req.body.skills,
+        description: req.body.description,
+        address:req.body.address,
+        link: req.body.link,    
     });
     
     await Resume.save().then(data => {
         res.send({
-            message:"Job created successfully!!",
+            message:"Resume created successfully!!",
             Resume:data
         });
     }).catch(err => {
         res.status(500).send({
-            message: err.message || "Some error occurred while creating Hr"
+            message: err.message || "Some error occurred while creating Resume"
         });
     });
 };
@@ -56,10 +62,10 @@ exports.update = async (req, res) => {
     await resumeModel.findByIdAndUpdate(id, req.body, { useFindAndModify: false }).then(data => {
         if (!data) {
             res.status(404).send({
-                message: `Job not found.`
+                message: `Resume not found.`
             });
         }else{
-            res.send({ message: "Job updated successfully." })
+            res.send({ message: "Resume updated successfully." })
         }
     }).catch(err => {
         res.status(500).send({
@@ -73,11 +79,11 @@ exports.destroy = async (req, res) => {
     await resumeModel.findByIdAndRemove(req.params.id).then(data => {
         if (!data) {
           res.status(404).send({
-            message: `Job not found.`
+            message: `Resume not found.`
           });
         } else {
           res.send({
-            message: "Job deleted successfully!"
+            message: "Resume deleted successfully!"
           });
         }
     }).catch(err => {

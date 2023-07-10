@@ -7,17 +7,34 @@ const ResumeSchema = new Schema({
     required: true
   },
   phone: {
+    type: Number,
+    required: true
+  },
+  email: {
     type: String,
     required: true
   },
-  education:[{
-    type: Date,
-    required: true,
-    num:Number,
-    name:String,
-    Gpt:Number,
-  }] ,
-  
+  address:{ 
+    type: String,
+    required: true
+  },
+
+  education:{
+ type: String,
+ required: true,
+  name:String
+  },
+  experience:{
+    type: String
+  },
+  skills:{
+    type: String
+  },
+    description:{
+    type: String
+  },
+  link:{type: String
+  }
 });
 
 const Resume =mongoose.model("Resume",ResumeSchema);
