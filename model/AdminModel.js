@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const schema = mongoose.Schema;
+const uniqueValidatore = require("mongoose-unique-validator");
+
 const AdminSchema = new schema({
     fullName: { type: String, required: true },
     password: { type: String, select: false, require: true },
@@ -7,7 +9,17 @@ const AdminSchema = new schema({
     phone:{type: Number, required: true,unique: true},
 //relation
 //ON HOLD
-});
+
+    createdjob: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref:"JobModel",
+        },
+      ], 
+        timestamps: true,
+      },);
+
+AdminSchema.plugin(uniqueValidatore);
 const Model =mongoose.model("Admin",AdminSchema);
 module.exports=Model;
 

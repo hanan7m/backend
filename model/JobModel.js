@@ -12,10 +12,10 @@ const jobSchema = new Schema({
     requirment: {
         type: String,
     },
-    city: {
+    city: {      
         type: String,
-        required: true 
-    },
+        required: true },
+
     expernence: {
         type: String,
     },
@@ -25,8 +25,10 @@ const jobSchema = new Schema({
     },
     e_date: {
         type: Number,
+        type: Date,
         required: true 
     },
+
     salary: {
         type: Number,
     },
@@ -36,4 +38,5 @@ const jobSchema = new Schema({
     }
 });
 
-module.exports = JobModel =  mongoose.model('JobModel', jobSchema)
+const Job =mongoose.model("job",jobSchema);
+module.exports=Job;

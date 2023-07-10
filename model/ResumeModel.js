@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 const schema = mongoose.Schema;
 
-
-// Schema
 const ResumeSchema = new Schema({
   fullname: {
     type: String,
@@ -20,8 +18,8 @@ const ResumeSchema = new Schema({
     Gpt:Number,
   }] ,
   
-})
+});
 
-const Model =mongoose.model("Resume",ResumeSchema);
-module.exports=Model;
+const Resume =mongoose.model("Resume",ResumeSchema);
+module.exports=Resume;
 
