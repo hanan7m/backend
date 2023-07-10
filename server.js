@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const app=express();
 const dotenv = require("dotenv");
 dotenv.config();
+app.use(express.json());
+
 app.use(bodyParser.json())
 const mongoose = require('mongoose');
 

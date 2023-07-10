@@ -50,7 +50,7 @@ const studentSchema = new schema({
     email: { 
       type: String, 
       select: false,
-      validate: passwordValidator, 
+      //validate: passwordValidator, 
       require: true },
 
     phone:{
@@ -74,10 +74,11 @@ const studentSchema = new schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "CompanyModel", 
  },],
- resume:[{
+ resume:{
    type: mongoose.Schema.Types.ObjectId,
+   
    ref: "ResumeModel"
-},],
+},
 });
 
 

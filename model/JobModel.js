@@ -10,7 +10,7 @@ const jobSchema = new Schema({
         type: String,required: true 
     },
     requirment: {
-        type: String,
+        type: String
     },
     city: {      
         type: String,
@@ -30,10 +30,10 @@ const jobSchema = new Schema({
     },
 
     salary: {
-        type: Number,
+        type: Number
     },
     skills: {
-        type: [String],
+        type: String,
         //required: true
     }
 });
